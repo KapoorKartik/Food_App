@@ -30,7 +30,7 @@ function debounce(func, delay) {
             cont.append(p)
     })
    }
-  if (who == "showRecipe" || "random" ) {
+  if (who == "showRecipe" ||who == "random" ) {
     cont.innerHTML = null
     let img_div = document.createElement('div')
     img_div.setAttribute('id', 'img_div')
@@ -57,7 +57,29 @@ console.log("strMeal",data.strMeal);
     cont.append(img_div , content_div)
 
   }
+if (who == "latest") {
+  data.forEach(({strMeal , strMealThumb, strYoutube , strInstructions})=>{
+    // console.log('strmeal',strMeal);
+    let main = document.createElement('div')
 
+    let name = document.createElement('p')
+    name.innerHTML = strMeal
+console.log("strMeal",strMeal);
+    let img = document.createElement('img')
+    img.src = strMealThumb
+
+    let inst = document.createElement('p')
+    inst.innerHTML = strInstructions
+
+    let youtube_link = document.createElement('a')
+    youtube_link.href = strYoutube
+    youtube_link.innerHTML = `YouTube link for ${strMeal}`
+
+    main.append(img,name,inst,youtube_link)
+    cont.append(main)
+
+  })
+}
 }
 
 function showRecipe(strMeal) {

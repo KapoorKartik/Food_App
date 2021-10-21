@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latest Recipes</title>
     <link rel="stylesheet" href="./styles/navbar.css">
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
-      rel="stylesheet"
-    />
+
+    <link rel="stylesheet" href="./styles/latest.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
 </head>
 <body>
     <div id="navbar"></div>
-    
+    <div id="container"></div>
   
 </body>
 </html>
@@ -22,4 +22,16 @@
 let nav = document.getElementById('navbar')
 nav.innerHTML = navbar()
 
+
+let container = document.getElementById('container')
+  import {searchRecipe  , appendName } from "./scripts/search.js";
+
+function showLatest() {
+    let res = searchRecipe("https://www.themealdb.com/api/json/v1/1/search.php?f=a")
+    .then(({meals}) =>{
+        console.log(meals);
+        appendName(meals , container , "latest")
+    })
+}
+showLatest()
 </script>
