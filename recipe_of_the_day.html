@@ -10,14 +10,30 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./styles/recipe_of_the_day.css">
 </head>
 <body>
     <div id="navbar"></div>
-   
+    <div id="show"></div>
 </body>
 </html>
 <script type='module'>
     import navbar from './components/navbar.js'
 let nav = document.getElementById('navbar')
 nav.innerHTML = navbar()
+
+import {appendName , searchRecipe} from "./scripts/search.js"
+
+let show = document.getElementById('show')
+function randomRecipe() {
+let res = searchRecipe("https://www.themealdb.com/api/json/v1/1/random.php")
+.then(({meals}) =>{
+    console.log(meals);
+    appendName(meals[0] ,show , "random")
+})
+}
+
+randomRecipe() 
+
+
 </script>

@@ -30,7 +30,7 @@ function debounce(func, delay) {
             cont.append(p)
     })
    }
-  if (who == "showRecipe") {
+  if (who == "showRecipe" || "random" ) {
     cont.innerHTML = null
     let img_div = document.createElement('div')
     img_div.setAttribute('id', 'img_div')
