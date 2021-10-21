@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food App</title>
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <div id="search_box">
+      <input id="query" type="text" placeholder="Search for a meal" />
+      <div id="container"></div>
+    </div>
+  </body>
+</html>
+
+<script type="module">
+
+import navbar from './components/navbar.js'
+let nav = document.getElementById('navbar')
+nav.innerHTML = navbar()
+
+
+  let container = document.getElementById('container')
+  import {searchRecipe , debounce , appendName } from "./scripts/search.js";
+  
+
+  
+
+  function abc() {
+    let query = document.getElementById("query").value;
+    if (query < 3) {
+      return false
+    }
+    console.log(query);
+    let res = searchRecipe(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
+    ).then((res) => {
+      console.log(res);
+     
+      appendName(res,container)
+    
+    });
+  }
+function deb() {
+  debounce(abc , 2000)
+}
+function test(){
+  console.log('clicked the input box');
+}
+  query.addEventListener('input',deb)
+  query.addEventListener('click', test)
+</script>
