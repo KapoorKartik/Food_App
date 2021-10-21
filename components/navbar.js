@@ -1,6 +1,5 @@
-
 function navbar() {
-    return `<div id="logo">
+  return `<div id="logo">
     <img
       src="https://i.pinimg.com/originals/01/48/66/0148662247327a7d268ce7d02b8662cf.png"
       alt=""
@@ -18,7 +17,7 @@ function navbar() {
 
   <button id="latest_recipe">
   <a href="latest_recipe.html">Latest Recipes</a></button>
-  <button class="material-icons-outlined">account_circle</button>`
-  }
+  <button class="material-icons-outlined">account_circle</button>`;
+}
 
-  export default navbar
+export default navbar;

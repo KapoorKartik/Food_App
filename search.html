@@ -17,7 +17,9 @@
     <div id="search_box">
       <input id="query" type="text" placeholder="Search for a meal" />
       <div id="container"></div>
+     
     </div>
+     <div id="show"></div>
   </body>
 </html>
 
@@ -31,7 +33,7 @@ nav.innerHTML = navbar()
   let container = document.getElementById('container')
   import {searchRecipe , debounce , appendName } from "./scripts/search.js";
   
-
+let show = document.getElementById('show')
   
 
   function abc() {
@@ -45,12 +47,12 @@ nav.innerHTML = navbar()
     ).then(({meals}) => {
       console.log(meals);
      
-      appendName(meals,container)
+      appendName(meals,container,"debounce")
     
     });
   }
 function deb() {
-  debounce(abc , 2000)
+  debounce(abc , 2000 )
 }
 function test(){
   console.log('clicked the input box');
